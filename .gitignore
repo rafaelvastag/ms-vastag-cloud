@@ -36,6 +36,7 @@ build/
 ### ECLIPSE ###
 
 .metadata
+.desktop.ini
 
 ### Mac ###
 
