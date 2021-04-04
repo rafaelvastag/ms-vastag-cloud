@@ -10,12 +10,12 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vastag</groupId>
-	<artifactId>hr-worker</artifactId>
+	<artifactId>hr-payroll</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hr-worker</name>
-	<description>Worker Microservice for Human Resources</description>
+	<name>hr-payroll</name>
+	<description>Payroll Microservice for Human Resources</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
