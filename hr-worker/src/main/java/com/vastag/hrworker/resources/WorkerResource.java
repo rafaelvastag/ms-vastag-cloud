@@ -46,6 +46,7 @@ public class WorkerResource {
 		
 		WorkerDTO worker = service.findById(id).map(entity -> modelMapper.map(entity, WorkerDTO.class))
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		
 		return ResponseEntity.ok(worker);
 	}
 
