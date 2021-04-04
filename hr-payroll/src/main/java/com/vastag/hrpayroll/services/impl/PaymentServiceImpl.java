@@ -19,9 +19,8 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	public Optional<Payment> getPayment(Long workerId, int days) {
-
 		WorkerDTO worker = workerFeign.findByWorkerId(workerId).getBody();
-
+		
 		return Optional
 				.of(Payment.builder().name(worker.getName()).dailyIncome(worker.getDailyIncome()).days(days).build());
 	}
