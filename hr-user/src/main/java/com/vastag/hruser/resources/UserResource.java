@@ -27,7 +27,6 @@ public class UserResource {
 
 	@GetMapping(value = "/search")
 	public ResponseEntity<UserDTO> findByEmail(@RequestParam(name = "email") String email) {
-
 		UserDTO user = service.findByEmail(email).map(entity -> modelMapper.map(entity, UserDTO.class))
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
@@ -36,7 +35,6 @@ public class UserResource {
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findByUserId(@PathVariable(name = "id") Long id) {
-
 		UserDTO user = service.findById(id).map(entity -> modelMapper.map(entity, UserDTO.class))
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
