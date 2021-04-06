@@ -4,10 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,15 +29,8 @@ public class WorkerResource {
 	private final WorkerService service;
 	private final ModelMapper modelMapper;
 
-	@Autowired
-	private Environment env;
-
-	@Value("${test.config}")
-	private String externalConfig;
-
 	@GetMapping(value = "/configs")
 	public ResponseEntity<List<WorkerDTO>> findConfigs() {
-		log.info(externalConfig);
 		return ResponseEntity.noContent().build();
 	}
 
@@ -53,8 +43,6 @@ public class WorkerResource {
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<WorkerDTO> findByWorkerId(@PathVariable(name = "id") Long id) {
-
-		log.info("PORT = " + env.getProperty("local.server.port"));
 
 		WorkerDTO worker = service.findById(id).map(entity -> modelMapper.map(entity, WorkerDTO.class))
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
